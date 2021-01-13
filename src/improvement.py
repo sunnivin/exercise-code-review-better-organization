@@ -2,7 +2,6 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import numpy as np
 
-
 #--- Set plot settings to match LaTeX<3
 def latex_plot():
     plt.rcParams['figure.figsize'] = (16, 16)
@@ -21,11 +20,10 @@ def latex_plot():
     plt.rcParams['ytick.minor.size'] = 3
     plt.rcParams['ytick.major.width'] = 1
     plt.rcParams['ytick.minor.width'] = 1
-    plt.rcParams['legend.frameon'] = False    
+    plt.rcParams['legend.frameon'] = False
     plt.rcParams['axes.linewidth'] = 1.5
 
-    
-    # --- Use latex-style on text in plots 
+    # --- Use latex-style on text in plots
     plt.rcParams['text.usetex'] = True
 
     # --- Custumize the length of the labels
@@ -35,10 +33,10 @@ def latex_plot():
 
     # --- Ignore warnings for generated plot
     plt.rcParams.update({'figure.max_open_warning': 0})
-    
+
     plt.linewidth=17.0
     font_size_plot = 20
-    
+
     return font_size_plot
 
 def plot_data(data, data_label, mean, mean_label, median, median_label, xlabel, ylabel, file_name):
@@ -46,8 +44,8 @@ def plot_data(data, data_label, mean, mean_label, median, median_label, xlabel, 
    plt.xlabel(xlabel)
    plt.ylabel(ylabel)
    plt.axhline(y=mean, color="b", linestyle="--", label=mean_label)
-   plt.axhline(y=median, color="g", linestyle="--", label=median_label)
-   plt.legend()
+   plt.axhline(y=median, color="g", linestyle=":", label=median_label)
+   plt.legend()   
    plt.savefig(file_name)
    plt.clf()
 
@@ -63,7 +61,6 @@ latex_plot()
 data_label    = "Temp"
 mean_label    = "Mean"
 median_label  = "Median"
-
 
 for num_measurements in [25, 100, 500]:
 
@@ -85,5 +82,5 @@ for num_measurements in [25, 100, 500]:
        median_label=median_label,
        xlabel="Measurements",
        ylabel="Air temperature ($^\circ$C)",
-       file_name="output/"+str(num_measurements)+'.png',
+       file_name='output/'+str(num_measurements)+'.png',
    )
