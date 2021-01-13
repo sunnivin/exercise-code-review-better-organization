@@ -41,12 +41,13 @@ def latex_plot():
     
     return font_size_plot
 
-def plot_data(data, mean, median, xlabel, ylabel, file_name):
-   plt.plot(data, "r-")
+def plot_data(data, data_label, mean, mean_label, median, median_label, xlabel, ylabel, file_name):
+   plt.plot(data, "r-", label=data_label)
    plt.xlabel(xlabel)
    plt.ylabel(ylabel)
-   plt.axhline(y=mean, color="b", linestyle="--")
-   plt.axhline(y=median, color="g", linestyle="--")
+   plt.axhline(y=mean, color="b", linestyle="--", label=mean_label)
+   plt.axhline(y=median, color="g", linestyle="--", label=median_label)
+   plt.legend()
    plt.savefig(file_name)
    plt.clf()
 
@@ -57,6 +58,12 @@ def read_data(file_name, nrows, column):
 
 # --- Add LaTeX-style plotting
 latex_plot()
+
+# -- Set plot lables
+data_label    = "Temp"
+mean_label    = "Mean"
+median_label  = "Median"
+
 
 for num_measurements in [25, 100, 500]:
 
@@ -71,9 +78,12 @@ for num_measurements in [25, 100, 500]:
 
    plot_data(
        data=temperatures,
+       data_label=data_label,
        mean=mean,
+       mean_label=mean_label,
        median=median,
+       median_label=median_label,
        xlabel="Measurements",
        ylabel="Air temperature ($^\circ$C)",
-       file_name=str(num_measurements)+'.png',
+       file_name="output/"+str(num_measurements)+'.png',
    )
