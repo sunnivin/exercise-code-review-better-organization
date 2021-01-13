@@ -4,7 +4,7 @@ import numpy as np
 
 
 #--- Set plot settings to match LaTeX<3
-def init_plotting():
+def latex_plot():
     plt.rcParams['figure.figsize'] = (16, 16)
     plt.rcParams['font.size'] = 45
     plt.rcParams['font.family'] = 'serif'
@@ -56,7 +56,7 @@ def read_data(file_name, nrows, column):
    return data[column]
 
 # --- Add LaTeX-style plotting
-init_plotting()
+latex_plot()
 
 for num_measurements in [25, 100, 500]:
 
